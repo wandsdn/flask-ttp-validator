@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>TTP Validator</title>
+		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+body {
+	counter-reset: l_counter;
+}
+	    .line::before {
+		    counter-increment: l_counter;
+		    content: counter(l_counter);
+		    display: inline-block;
+		    border-right: 1px solid #ddd;
+		    padding: 0 .5em;
+		    margin-right: .5em;
+		    min-width: 5ch;
+		    color: #888; 
+	    }
+		</style>
+	</head>
+	<body>
+		<div style='margin-left:10px; margin-right:10px'>
+			<h1>TTP Validator</h1>
+			<p>You can link the result using this <a href="{{ permalink }}">permalink</a>.<br />
+			You can also skip directly to the <a href='#source'>annotated result</a> below.</p>
+			{% if issues %}
+			<h2>{{issues|length}} Issues detected</h2>
+			<ol>
+				{% for issue in issues %}
+				<li><a href="#{{ issue[1] }}" title="{{ source[issue[1]:issue[2]] }}">{{ issue[0] }}</a></li>
+				{% endfor %}
+			</ol>
+			{% else %}
+			<h2>No issues detected</h2>
+			<p>All looks well.</p>
+			{% endif %}
+			<h2 id='source'>Annotated Table Type Pattern</h2>
+			<pre>
+{{ FILE|safe }}
+			</pre>
+		</div>
+	</body>
+</html>

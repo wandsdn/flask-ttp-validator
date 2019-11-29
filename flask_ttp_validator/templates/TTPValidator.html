@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Table Type Pattern Validator</title>
+		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<style>
+.parent {
+	display: flex;
+	flex-wrap: wrap;
+}
+.child {
+	float: left;
+	margin: 0px 30px 0px 0px;
+}
+		</style>
+	</head>
+	<body><div style='margin-left:10px; margin-right:10px'>
+			<h2>Table Type Pattern Validator</h2>
+			<p>Finds errors and common issues within a JSON <a href='https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/OpenFlow%20Table%20Type%20Patterns%20v1.0.pdf'>Table Type Pattern v1</a> validated against
+			<a href='https://www.opennetworking.org/images/stories/downloads/sdn-resources/onf-specifications/openflow/openflow-switch-v1.3.5.pdf'>OpenFlow 1.3</a>. This includes detecting incorrectly named OXM match fields, missing identifiers, incorrect values, invalid
+			actions etc. This TTP validator is an offshoot of my efforts to parse and process
+			Table Type Patterns as part of my PhD, and detects issues I've seen. This might not catch everything and is a best effort.
+			</p>
+			<div class='parent'>
+				<div class='child' >
+					<h3>Upload a JSON TTP as text</h3>
+					<form action="check/" method="post" enctype="multipart/form-data">
+						<textarea name="TTP" cols="60" rows="20"></textarea>
+						<br/><label>
+							<input type="checkbox" name="prettify">Prettify Result
+						</label>
+						<label style="float:right;">
+							<input type="submit" value="Validate">
+						</label>
+					</form>
+				</div>
+	    <div class='child'>
+		    <h3>Upload a JSON TTP file</h3>
+		    <form action="check/" method="post" enctype="multipart/form-data">
+			    <label>
+				    <input type="file" name="TTPFile">
+			    </label>
+			    <label>
+				    <input type="checkbox" name="prettify">Prettify Result
+			    </label>
+			    <br /><label>
+				    <input type="submit" value="Validate">
+			    </label>
+		    </form>
+		    <p><small>For best results use UTF-8 encoding. Upload size is limited to 1MB.</small></p>
+	    </div>
+			</div>
+			<div style='clear:both'></div>
+			<h3>Contact</h3>
+			<p>If you encounter any problems or bugs with the validator please let me know.</p>
+			<p>Or if you wish to discuss my research further, or have TTP patterns I could use.</p>
+			<div class='parent'>
+				<div class='child' style='margin-top:auto; margin-bottom:auto;'>
+					<a href='http://wand.nz'><img alt='WAND logo' src='https://secure.wand.net.nz/logo/images/wand-160x65.png' /></a>
+				</div>
+				<div class='child' style='margin-top:auto; margin-bottom:auto;'>
+					<p>Author: Richard Sanger
+					<p>Email: <a href="mailto:&#114;&#115;&#097;&#110;&#103;&#101;&#114;&#064;&#119;&#097;&#110;&#100;&#046;&#110;&#101;&#116;&#046;&#110;&#122;">&#114;&#115;&#097;&#110;&#103;&#101;&#114;&#064;&#119;&#097;&#110;&#100;&#046;&#110;&#101;&#116;&#046;&#110;&#122;</a></p>
+				</div>
+			</div>
+			<h3 style='clear:left'>My Research</h3>
+			<p>This validator is a portion of my ongoing PhD, which I've released to assist the
+			community in creating TTPs.</p>
+			<p>I'm researching how to algorithmically transform a set of OpenFlow flow rules from
+			one hardware pipeline to another (i.e. from one TTP to another). Given an OpenFlow flow rule set installed on a switch by an application I'm attempting to fit these flow rules to a new OpenFlow switch with a different pipeline. I'm using TTPs to describe the hardware pipeline and I'm programatically extracting information from them. Currently my research scope is focused an offline method which works with a flow rule set at a single point in time.
+			</p>
+			<p>I'm interested in obtaining more TTPs to test my research with, please get in touch if you have any or wish to discuss my research further.</p>
+		</div></body>
+</html>
